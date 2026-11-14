@@ -1,27 +1,22 @@
 ﻿Random dice = new Random();
 int diceNumber = 0;
-
 Console.WriteLine("Сколько кубиков бросить?");
 List<int> rolls = new List<int>();
 while (true)
 {
-    var userInput = Console.ReadLine();
-    if (int.TryParse(userInput, out diceNumber))
-    {
-        if (diceNumber > 0 && diceNumber <= 100)
-        {
-            Console.WriteLine("Ok");
-            break;
-        }
-        else
-        {
-            Console.WriteLine("Dice number must be 1-100");
-        }
-    }
-    else
+    if (!int.TryParse(Console.ReadLine(), out diceNumber))
     {
         Console.WriteLine("Input a number");
+        continue;
     }
+
+    if (diceNumber < 1 || diceNumber > 100)
+    {
+        Console.WriteLine("Dice number must be 1-100");
+        continue;
+    }
+
+    break;
 }
 for (int i = 0; i < diceNumber; i++)
 {
